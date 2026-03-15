@@ -25,10 +25,12 @@ const promise2 = new Promise((resolve, reject) => {
   setTimeout(() => reject(), 3000);
 });
 
-promise1.then(() => createMessage('message', 'Promise was resolved!')).catch();
+promise1
+  .then(() => createMessage('message', 'Promise was resolved!'))
+  .catch(() => createMessage('message error-message', 'Promise was rejected!'));
 
 promise2
-  .then()
+  .then(() => createMessage('message', 'Promise was resolved!'))
   .catch(() => createMessage('message error-message', 'Promise was rejected!'));
 
 logo.addEventListener('click', () => {

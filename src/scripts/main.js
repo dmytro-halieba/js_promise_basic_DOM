@@ -1,3 +1,5 @@
+/* eslint-disable prefer-promise-reject-errors */
+/* eslint-disable function-paren-newline */
 'use strict';
 
 const body = document.querySelector('body');
@@ -23,10 +25,11 @@ const promise2 = new Promise((resolve, reject) => {
   setTimeout(() => reject(), 3000);
 });
 
-promise1.then(() => createMessage('message', 'Promise was resolved!'));
+promise1.then(() => createMessage('message', 'Promise was resolved!')).catch();
 
-promise2.catch(() =>
-  createMessage('message error-message', 'Promise was rejected!'));
+promise2
+  .then()
+  .catch(() => createMessage('message error-message', 'Promise was rejected!'));
 
 logo.addEventListener('click', () => {
   resolveFn();
